@@ -9,7 +9,7 @@ namespace HybridAStar {
 /*!
    \brief A two dimensional node class used for the holonomic with obstacles heuristic.
    Each node has a unique discrete position (x,y).
-   无动力学约束、存在障碍的节点类定义
+   具有障碍物启发式的完整性约束类，每一个节点都有唯一的离散坐标。
 */
 class Node2D {
  public:

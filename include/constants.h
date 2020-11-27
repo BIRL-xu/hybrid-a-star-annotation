@@ -129,22 +129,24 @@ static const int dubinsArea = dubinsWidth * dubinsWidth; //Dubin搜索区域的�
 
 /// [m] -- The bounding box size length and width to precompute all possible headings
 //用于预计算所有可能的转向的框的大小
-static const int bbSize = std::ceil((sqrt(width * width + length* length) + 4) / cellSize);
+static const int bbSize = std::ceil((sqrt(width * width + length* length) + 4) / cellSize); // 车轮廓占用的cell个数.
 /// [#] --- The sqrt of the number of discrete positions per cell
 static const int positionResolution = 10;//每个cell里的离散位置数量的平方根
 /// [#] --- The number of discrete positions per cell
 static const int positions = positionResolution * positionResolution;//位置的数量
 /// A structure describing the relative position of the occupied cell based on the center of the vehicle
-struct relPos {//相对于中心的位置：即以中心为坐标原点
+//在车体坐标系下表述的占据栅格的位置。
+struct relPos {
   /// the x position relative to the center
   int x; 
   /// the y position relative to the center
   int y;
 };
 /// A structure capturing the lookup for each theta configuration
+/// 每一个航向角下车轮廓构型占据的栅格数量及相对该轮廓构型的64个占据栅格位置。（即只考虑64个栅格，多了不管。）
 struct config {//用以获取每个theta的查找表的结构体
   /// the number of cells occupied by this configuration of the vehicle
-  int length;//长度，
+  int length;//车轮廓占据的栅格数量
   /*!
      \var relPos pos[64]
      \brief The maximum number of occupied cells

@@ -43,7 +43,7 @@ class Planner {
      \brief Sets the map e.g. through a callback from a subscriber listening to map updates.
      \param map the map or occupancy grid
   */
-  void setMap(const nav_msgs::OccupancyGrid::Ptr map);//通过订阅者监听的回调函数设置地图
+  void setMap(const nav_msgs::OccupancyGrid::Ptr map);//订阅地图更新的对调函数。
 
   /*!
      \brief setStart
